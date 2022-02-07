@@ -1,4 +1,4 @@
-# dice-roller
+# Dice-Roller
 
 With the Dice Class you can make the Roll-Verse dream came true.
 

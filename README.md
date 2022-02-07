@@ -1,8 +1,8 @@
 # Dice-Roller
 
-With the Dice Class you can make the Roll-Verse dream came true.
+With the Dice Class you can make the Roll-Verse dream come true.
 
-## usage
+## Usage
 
 ```javascript
 import "./dice.css";

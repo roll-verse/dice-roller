@@ -1,0 +1,82 @@
+body {
+  font-family: sans-serif;
+}
+
+#app {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+}
+
+.dice {
+  display: flex;
+  height: 100px;
+  width: 100px;
+  padding: 12px;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  border-radius: 30px;
+}
+
+.d4 {
+  background-color: lightsalmon;
+  text-shadow: 2px 1px 7px black;
+  box-shadow: 2px 1px 7px lightsalmon;
+  color: white;
+}
+
+.d6 {
+  background-color: lightgreen;
+  text-shadow: 2px 1px 7px black;
+  box-shadow: 2px 1px 7px lightgreen;
+  color: white;
+}
+
+.d8 {
+  background-color: lightseagreen;
+  text-shadow: 2px 1px 7px black;
+  box-shadow: 2px 1px 7px lightseagreen;
+  color: white;
+}
+
+.d10 {
+  background-color: lightskyblue;
+  text-shadow: 2px 1px 7px white;
+  box-shadow: 2px 1px 7px lightskyblue;
+  color: white;
+}
+
+.d12 {
+  background-color: coral;
+  text-shadow: 2px 1px 7px black;
+  box-shadow: 2px 1px 7px coral;
+  color: white;
+}
+
+.d20 {
+  background-color: lightcoral;
+  text-shadow: 2px 1px 7px black;
+  box-shadow: 2px 1px 7px lightcoral;
+  color: white;
+}
+
+.d100 {
+  background-color: greenyellow;
+  text-shadow: 2px 1px 7px black;
+  box-shadow: 2px 1px 7px greenyellow;
+  color: white;
+}
+
+.ddefault {
+  background-color: red;
+  text-shadow: 2px 1px 7px black;
+  box-shadow: 2px 1px 7px red;
+  color: white;
+}
+
+.crit {
+  color: red;
+}

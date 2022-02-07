@@ -2,7 +2,7 @@
 
 With the Dice Class you can make the Roll-Verse dream came true.
 
-##usage
+## usage
 
 ```javascript
 import "./dice.css";

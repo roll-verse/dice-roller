@@ -1,4 +1,5 @@
 import "./styles.css";
+import "./dice.css";
 import Dice from "./dice.js";
 
 let D4 = new Dice({faces:4});

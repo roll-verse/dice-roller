@@ -4,8 +4,19 @@ export default class Dice {
    *
    * @param {faces} Faces of the dice
    */
-  constructor(faces = 6) {
-    this.faces = faces;
+  constructor(config) {
+    
+    this.config = {
+
+      faces: config.faces ? config.faces : 6, // Numero di facce
+
+      base_modifier: config.base_modifier ? config.base_modifier : 0, // Modificatore di base applicato ad ogni tiro
+
+      custom_dice_class: config.custom_diceclass ? config.custom_diceclass : "", // Classe css custom in aggiunta a quella base (es. 'dice d4 galaxy-dice' )
+
+      custom_crit_class: config.custom_crit_class ? config.custom_crit_class : ""       // Classe css custom in aggiunta a quella base quando il dado critta (es. 'dice d4 galaxy-dice crit fabuluse-crit' )
+    
+    };
   }
 
   /**
@@ -20,7 +31,7 @@ export default class Dice {
 
     Dice.classList.add("dice");
 
-    switch (this.faces) {
+    switch (this.config.faces) {
       case 4:
         Dice.classList.add("d4");
         break;
@@ -71,10 +82,10 @@ export default class Dice {
    */
 
   rollTheDice(mod = 0) {
-    let max = this.faces;
+    let max = this.config.faces;
     let value = Math.floor(Math.random() * max) + mod + 1;
     this.rendered.textContent = value;
-    if (value == this.faces) this.rendered.classList.add("crit");
+    if (value == this.config.faces) this.rendered.classList.add("crit");
     else this.rendered.classList.remove("crit");
     return value;
   }

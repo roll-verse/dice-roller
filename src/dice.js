@@ -81,7 +81,7 @@ export default class Dice {
     this.draw(Dice, {
       dice_name: this.config.dice_name,
       value: this.config.faces,
-      modifier: this.base_modifier
+      modifier: this.config.base_modifier
     });
 
     document.getElementById(elemnt).appendChild(Dice);

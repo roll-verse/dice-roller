@@ -103,8 +103,9 @@ export default class Dice {
 
   rollTheDice(mod = 0) {
     let max = this.config.faces;
+    let total_modifier = mod + this.config.base_modifier;
     let value =
-      Math.floor(Math.random() * max) + mod + 1 + this.config.base_modifier;
+      Math.floor(Math.random() * max) + total_modifier + 1;
 
     this.draw(this.rendered, {
       dice_name: this.config.dice_name,
@@ -112,7 +113,7 @@ export default class Dice {
       modifier: this.config.base_modifier
     });
 
-    if (value == this.config.faces) {
+    if (value - total_modifier  == this.config.faces) {
       this.rendered.classList.add("crit");
 
       if (this.config.custom_crit_class)

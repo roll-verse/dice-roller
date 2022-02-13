@@ -28,6 +28,7 @@ export default class Dice {
    */
 
   renderDice(elemnt) {
+    let DiceContainer = document.createElement("dice-container");
     let Dice = document.createElement("dice");
 
     Dice.classList.add("dice");
@@ -78,18 +79,19 @@ export default class Dice {
       Dice.classList.add(this.config.custom_dice_class);
     }
 
-    this.draw(Dice, {
+    document.getElementById(elemnt).appendChild(DiceContainer);
+
+    this.draw(DiceContainer, Dice, {
       dice_name: this.config.dice_name,
       value: this.config.faces,
       modifier: this.config.base_modifier
     });
 
-    document.getElementById(elemnt).appendChild(Dice);
-
-    Dice.addEventListener("click", (event) => {
+    DiceContainer.addEventListener("click", (event) => {
       this.rollTheDice();
     });
 
+    this.container = DiceContainer;
     this.rendered = Dice;
     return Dice;
   }
@@ -104,16 +106,15 @@ export default class Dice {
   rollTheDice(mod = 0) {
     let max = this.config.faces;
     let total_modifier = mod + this.config.base_modifier;
-    let value =
-      Math.floor(Math.random() * max) + total_modifier + 1;
+    let value = Math.floor(Math.random() * max) + total_modifier + 1;
 
-    this.draw(this.rendered, {
+    this.draw(this.container, this.rendered, {
       dice_name: this.config.dice_name,
       value: value,
       modifier: this.config.base_modifier
     });
 
-    if (value - total_modifier  == this.config.faces) {
+    if (value - total_modifier == this.config.faces) {
       this.rendered.classList.add("crit");
 
       if (this.config.custom_crit_class)
@@ -131,21 +132,24 @@ export default class Dice {
     return value;
   }
 
-
   /**
    * Use this function for drawing inside a Dice Element
-   * @param {Dice} Dice Html node od the Dice where we drawing inside 
+   * @param {Dice} Dice Html node od the Dice where we drawing inside
    * @param {config} config parameters to render
    */
-  draw(Dice, config) {
+
+  draw(DiceContainer, Dice, config) {
+    DiceContainer.textContent = "";
     Dice.textContent = "";
     let diceName = document.createElement("name");
     let diceValue = document.createElement("value");
     let diceMod = document.createElement("mod");
 
-    Dice.appendChild(diceName);
+    DiceContainer.append(Dice);
     Dice.appendChild(diceValue);
     Dice.appendChild(diceMod);
+
+    DiceContainer.appendChild(diceName);
 
     diceName.textContent = config.dice_name;
 

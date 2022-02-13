@@ -1,0 +1,19 @@
+.dice:hover {
+  animation: rolling 0.7s cubic-bezier(0.44, -0.01, 0, 1);
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rolling {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  min-height: 100vh;
+  background: #212534;
+}

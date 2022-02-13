@@ -6,13 +6,15 @@ export default class DiceBag {
    *
    */
   constructor() {
+    const d = new Date();
+    let time = d.getTime();
     this.dicebag = [];
+    this.id = "dice-bag-" + time;
   }
 
   /**
    *  Create a Dice and add it to the dice Array
-   * 
-   * @param {+}  Dice Configuration
+   * @param {+} config - Dice Configuration
    *
    */
   createNewDice(config) {
@@ -23,15 +25,17 @@ export default class DiceBag {
   /**
    * The draw function renders a dice in a specified <div id="elemnt"></div>
    *
-   * @param {element} id of parent node
-   * 
+   * @param {element} element
    */
 
-  draw(element) {
-    let bag = document.getElementById(element);
-    bag.textContent = "";
+  draw() {
+    let bag = document.createElement("dicebag");
+    bag.classList.add("card");
+    bag.setAttribute("id", this.id);
+    //bag.textContent = "";
+    document.body.append(bag);
     this.dicebag.forEach((dice) => {
-      dice.renderDice(element);
+      dice.renderDice(this.id);
     });
   }
 }

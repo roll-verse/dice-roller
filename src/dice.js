@@ -1,3 +1,5 @@
+import diceAnimation from "./diceAnimation";
+
 export default class Dice {
   /**
    *  This object is the Dice. Set the {faces} of the dice (default: 6)
@@ -16,7 +18,9 @@ export default class Dice {
         ? config.custom_crit_class
         : "", // Classe css custom in aggiunta a quella base quando il dado critta (es. 'dice d4 galaxy-dice crit fabuluse-crit' )
 
-      dice_name: config.dice_name ? config.dice_name : "" // Nome del dado
+      dice_name: config.dice_name ? config.dice_name : "", // Nome del dado
+
+      image: config.image ? config.image : "" //Sfondo del dado
     };
   }
 
@@ -84,7 +88,8 @@ export default class Dice {
     this.draw(DiceContainer, Dice, {
       dice_name: this.config.dice_name,
       value: this.config.faces,
-      modifier: this.config.base_modifier
+      modifier: this.config.base_modifier,
+      image: this.config.image
     });
 
     DiceContainer.addEventListener("click", (event) => {
@@ -93,6 +98,8 @@ export default class Dice {
 
     this.container = DiceContainer;
     this.rendered = Dice;
+    new diceAnimation(Dice);
+
     return Dice;
   }
 
@@ -111,7 +118,8 @@ export default class Dice {
     this.draw(this.container, this.rendered, {
       dice_name: this.config.dice_name,
       value: value,
-      modifier: this.config.base_modifier
+      modifier: this.config.base_modifier,
+      image: this.config.image
     });
 
     if (value - total_modifier == this.config.faces) {
@@ -144,10 +152,14 @@ export default class Dice {
     let diceName = document.createElement("name");
     let diceValue = document.createElement("value");
     let diceMod = document.createElement("mod");
+    let diceImg = document.createElement("img");
 
     DiceContainer.append(Dice);
     Dice.appendChild(diceValue);
     Dice.appendChild(diceMod);
+    Dice.appendChild(diceImg);
+
+    diceImg.setAttribute("src", config.image);
 
     DiceContainer.appendChild(diceName);
 

@@ -1,7 +1,3 @@
-body {
-  font-family: sans-serif;
-}
-
 #app {
   display: flex;
   gap: 10px;
@@ -10,3 +6,8 @@ body {
   flex-wrap: wrap;
 }
 
+body {
+  font-family: sans-serif;
+  min-height: 100vh;
+  background: #212534;
+}
